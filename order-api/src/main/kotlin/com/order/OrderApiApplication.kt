@@ -1,4 +1,4 @@
-package com.order.orderapi
+package com.order
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
