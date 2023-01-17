@@ -1,5 +1,6 @@
-package com.order.api
+package com.order.api.menu
 
+import com.order.api.V1_API_PREFIX
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -7,30 +8,24 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
-import org.springframework.test.web.servlet.post
+import org.springframework.test.web.servlet.get
 
 @AutoConfigureMockMvc
 @SpringBootTest
-internal class MembershipPublishApiControllerTest {
+internal class MenuViewApiControllerTest {
 
     @Autowired
     lateinit var mockMvc: MockMvc
 
     @Test
-    fun `membership 발급 요청 201 Created`() {
-        mockMvc.post("/api/v1/membership")
+    fun `메뉴 목록 조회 200 OK`() {
+        mockMvc.get("$V1_API_PREFIX/menu")
             .andExpect {
-                status { isCreated() }
+                status { isOk() }
                 content {
                     contentType(MediaType.APPLICATION_JSON)
-                    jsonPath("id") { exists() }
-                    jsonPath("membershipId") { exists() }
-                    jsonPath("membershipId") { isString() }
                 }
-            }.andDo {
-                print()
             }
-
+            .andDo { print() }
     }
-
 }

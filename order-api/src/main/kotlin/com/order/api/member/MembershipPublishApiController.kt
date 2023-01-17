@@ -1,5 +1,6 @@
-package com.order.api
+package com.order.api.member
 
+import com.order.api.V1_API_PREFIX
 import com.order.core.membership.MembershipService
 import com.order.core.membership.dto.MembershipIdResponse
 import org.springframework.http.HttpStatus
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping(V1_API_PREFIX)
 class MembershipPublishApiController(
     private val membershipService: MembershipService
 ) {
